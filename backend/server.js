@@ -10,13 +10,15 @@ const { registerWarranty } = require("./warranty");
 
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
 // Home route
 app.get("/", (req, res) => {
     res.json({
-        message: "LAKSHMI ELECTRICAL WORKS AND BATTERIES - Backend Running Successfully!"
+        message:
+            "LAKSHMI ELECTRICAL WORKS AND BATTERIES - Backend Running Successfully!"
     });
 });
 
@@ -93,8 +95,11 @@ app.post("/api/register-warranty", async (req, res) => {
 });
 
 // Start server
-const PORT = 5001;
+// Render provides process.env.PORT automatically.
+const PORT = process.env.PORT || 5001;
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(
+        `LAKSHMI ELECTRICAL WORKS AND BATTERIES running on port ${PORT}`
+    );
 });
