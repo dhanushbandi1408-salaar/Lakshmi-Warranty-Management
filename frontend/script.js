@@ -1,5 +1,5 @@
 
-const API_URL = "http://localhost:5001";
+const API_URL = "https://lakshmi-warranty-management.onrender.com";
 
 // Login elements
 const phoneInput = document.getElementById("phone");
@@ -37,7 +37,6 @@ function calculateExpiry(purchase, period) {
     if (!purchase || !period) return "-";
 
     const date = new Date(purchase + "T12:00:00");
-
     const match = period.match(/(\d+)\s*(Month|Year)/i);
 
     if (!match) return "-";
@@ -80,7 +79,10 @@ function showDashboard(customer) {
     dashboardSection.hidden = false;
 
     const purchase = customer.purchase_date;
-    const expiry = calculateExpiry(purchase, customer.warranty_type);
+    const expiry = calculateExpiry(
+        purchase,
+        customer.warranty_type
+    );
 
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -120,7 +122,9 @@ function showDashboard(customer) {
         customer.warranty_type || "-";
 
     document.getElementById("cardExpiryDate").textContent =
-        expiry === "-" ? "-" : expiry.toLocaleDateString("en-IN");
+        expiry === "-"
+            ? "-"
+            : expiry.toLocaleDateString("en-IN");
 
     document.getElementById("cardStatus").textContent = status;
 
@@ -133,18 +137,24 @@ sendOtpBtn.addEventListener("click", async () => {
     const phone = phoneInput.value.trim();
 
     if (!/^[0-9]{10}$/.test(phone)) {
-        message.textContent = "Enter a valid 10-digit mobile number.";
+        message.textContent =
+            "Enter a valid 10-digit mobile number.";
         return;
     }
 
     message.textContent = "Preparing demo OTP...";
 
     try {
-        const response = await fetch(`${API_URL}/api/send-otp`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ phone })
-        });
+        const response = await fetch(
+            `${API_URL}/api/send-otp`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ phone })
+            }
+        );
 
         const result = await response.json();
 
@@ -153,10 +163,13 @@ sendOtpBtn.addEventListener("click", async () => {
         }
 
         otpSection.hidden = false;
-        message.textContent = "Demo OTP ready! Enter 123456.";
+
+        message.textContent =
+            "Demo OTP ready! Enter 123456.";
 
     } catch (error) {
-        message.textContent = error.message || "Backend connection failed.";
+        message.textContent =
+            error.message || "Backend connection failed.";
     }
 });
 
@@ -174,11 +187,16 @@ verifyOtpBtn.addEventListener("click", async () => {
     message.textContent = "Verifying OTP...";
 
     try {
-        const response = await fetch(`${API_URL}/api/verify-otp`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ phone, otp })
-        });
+        const response = await fetch(
+            `${API_URL}/api/verify-otp`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ phone, otp })
+            }
+        );
 
         const result = await response.json();
 
@@ -187,7 +205,10 @@ verifyOtpBtn.addEventListener("click", async () => {
         }
 
         if (result.token) {
-            localStorage.setItem("warrantyToken", result.token);
+            localStorage.setItem(
+                "warrantyToken",
+                result.token
+            );
         }
 
         if (result.exists && result.customer) {
@@ -195,6 +216,7 @@ verifyOtpBtn.addEventListener("click", async () => {
         } else {
             loginSection.hidden = true;
             registrationSection.hidden = false;
+
             customerPhone.value = phone;
 
             message.textContent =
@@ -202,7 +224,8 @@ verifyOtpBtn.addEventListener("click", async () => {
         }
 
     } catch (error) {
-        message.textContent = error.message || "OTP verification failed.";
+        message.textContent =
+            error.message || "OTP verification failed.";
     }
 });
 
@@ -217,33 +240,44 @@ registerBtn.addEventListener("click", async () => {
     const warranty = warrantyType.value;
 
     if (!name || !product || !date || !warranty) {
-        message.textContent = "Please fill all required fields.";
+        message.textContent =
+            "Please fill all required fields.";
         return;
     }
 
     message.textContent = "Registering warranty...";
 
     try {
-        const response = await fetch(`${API_URL}/api/register-warranty`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                phone,
-                name,
-                product_name: product,
-                product_model: model,
-                purchase_date: date,
-                warranty_type: warranty
-            })
-        });
+        const response = await fetch(
+            `${API_URL}/api/register-warranty`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    phone,
+                    name,
+                    product_name: product,
+                    product_model: model,
+                    purchase_date: date,
+                    warranty_type: warranty
+                })
+            }
+        );
 
         const result = await response.json();
 
         if (!response.ok) {
-            throw new Error(result.message || "Registration failed.");
+            throw new Error(
+                result.message || "Registration failed."
+            );
         }
 
-        localStorage.setItem("warrantyToken", result.token);
+        localStorage.setItem(
+            "warrantyToken",
+            result.token
+        );
 
         showDashboard(result.customer);
 
@@ -286,7 +320,8 @@ whatsappBtn.addEventListener("click", () => {
         `Expiry Date: ${expiryText}\n\n` +
         `Owner: Bandi Balajoji - 9177237338`;
 
-    const url = "https://wa.me/?text=" + encodeURIComponent(text);
+    const url =
+        "https://wa.me/?text=" + encodeURIComponent(text);
 
     window.open(url, "_blank");
 });
@@ -306,5 +341,6 @@ logoutBtn.addEventListener("click", () => {
     otpInput.value = "";
     otpSection.hidden = true;
 
-    message.textContent = "You have logged out successfully.";
+    message.textContent =
+        "You have logged out successfully.";
 });
