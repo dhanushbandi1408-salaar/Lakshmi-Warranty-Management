@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LAKSHMI ELECTRICAL WORKS AND BATTERIES</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="login-card">
+
+        <div class="logo">⚡</div>
+
+        <h1>LAKSHMI ELECTRICAL WORKS</h1>
+        <h2>AND BATTERIES</h2>
+
+        <p class="subtitle">Customer Warranty Management</p>
+
+        <!-- LOGIN SECTION -->
+        <div id="loginSection" class="form-section">
+
+            <label for="phone">Mobile Number</label>
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Enter 10-digit mobile number"
+                maxlength="10"
+            >
+
+            <button id="sendOtpBtn">Send OTP</button>
+
+            <div id="otpSection" hidden>
+
+                <label for="otp">Enter Demo OTP</label>
+
+                <input
+                    type="text"
+                    id="otp"
+                    placeholder="Enter 6-digit OTP"
+                    maxlength="6"
+                >
+
+                <button id="verifyOtpBtn">Verify & Login</button>
+
+            </div>
+        </div>
+
+
+        <!-- NEW CUSTOMER REGISTRATION -->
+        <div id="registrationSection" class="form-section" hidden>
+
+            <h2>New Customer Registration</h2>
+
+            <label for="customerName">Customer Name</label>
+            <input type="text" id="customerName" placeholder="Enter customer name">
+
+            <label for="customerPhone">Mobile Number</label>
+            <input type="tel" id="customerPhone" readonly>
+
+            <label for="productName">Product Name</label>
+            <input type="text" id="productName" placeholder="Enter product name">
+
+            <label for="productModel">Product Model</label>
+            <input type="text" id="productModel" placeholder="Enter product model">
+
+            <label for="purchaseDate">Purchase Date</label>
+            <input type="date" id="purchaseDate">
+
+            <label for="warrantyType">Warranty Period</label>
+
+            <select id="warrantyType">
+                <option value="">Select Warranty Period</option>
+                <option value="3 Months">3 Months</option>
+                <option value="6 Months">6 Months</option>
+                <option value="9 Months">9 Months</option>
+                <option value="1 Year">1 Year</option>
+                <option value="18 Months">18 Months</option>
+                <option value="2 Years">2 Years</option>
+                <option value="3 Years">3 Years</option>
+                <option value="4 Years">4 Years</option>
+                <option value="5 Years">5 Years</option>
+            </select>
+
+            <button id="registerBtn">Register Warranty</button>
+
+        </div>
+
+
+        <!-- CUSTOMER DASHBOARD -->
+        <div id="dashboardSection" class="form-section" hidden>
+
+            <h2>My Warranty Dashboard</h2>
+
+            <p>Welcome back, <strong id="dashboardName">Customer</strong>!</p>
+
+            <div class="warranty-card" id="warrantyCard">
+
+                <div class="card-header">
+                    <h2>⚡ LAKSHMI ELECTRICAL WORKS</h2>
+                    <p>AND BATTERIES</p>
+                    <h3>DIGITAL WARRANTY CARD</h3>
+                </div>
+
+                <div class="card-body">
+
+                    <p><strong>Warranty ID:</strong>
+                        <span id="cardWarrantyId">-</span>
+                    </p>
+
+                    <p><strong>Customer Name:</strong>
+                        <span id="cardCustomerName">-</span>
+                    </p>
+
+                    <p><strong>Mobile Number:</strong>
+                        <span id="cardPhone">-</span>
+                    </p>
+
+                    <hr>
+
+                    <p><strong>Product:</strong>
+                        <span id="cardProductName">-</span>
+                    </p>
+
+                    <p><strong>Product Model:</strong>
+                        <span id="cardProductModel">-</span>
+                    </p>
+
+                    <p><strong>Purchase Date:</strong>
+                        <span id="cardPurchaseDate">-</span>
+                    </p>
+
+                    <p><strong>Registered Date:</strong>
+                        <span id="cardRegisteredDate">-</span>
+                    </p>
+
+                    <p><strong>Warranty Period:</strong>
+                        <span id="cardWarrantyType">-</span>
+                    </p>
+
+                    <p><strong>Warranty Expiry:</strong>
+                        <span id="cardExpiryDate">-</span>
+                    </p>
+
+                    <p><strong>Status:</strong>
+                        <span id="cardStatus">-</span>
+                    </p>
+
+                </div>
+
+                <div class="card-footer">
+                    <p>Thank you for choosing Lakshmi Electrical Works and Batteries.</p>
+                    <p>Owner: Bandi Balajoji | 9177237338</p>
+                    <p>Co-owner: Bandi Rajesh | 8185916418</p>
+                </div>
+
+            </div>
+
+            <button id="downloadPdfBtn">Download Warranty Card PDF</button>
+
+            <button id="whatsappBtn">Share on WhatsApp</button>
+
+            <button id="logoutBtn">Logout</button>
+
+        </div>
+
+
+        <!-- MESSAGE -->
+        <p id="message"></p>
+
+
+        <!-- CONTACT INFORMATION -->
+        <div class="footer">
+
+            <h3>Contact Information</h3>
+
+            <p><strong>Owner:</strong> Bandi Balajoji</p>
+            <p>Phone: +91 9177237338</p>
+
+            <p><strong>Co-owner:</strong> Bandi Rajesh</p>
+            <p>Phone: +91 8185916418</p>
+
+            <p><strong>Website Contact:</strong> Dhanush</p>
+            <p>Phone: +91 8247001465</p>
+
+            <p class="copyright">
+                © 2026 Lakshmi Electrical Works and Batteries
+            </p>
+
+        </div>
+
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

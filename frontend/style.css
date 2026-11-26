@@ -1,0 +1,275 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #071b3a, #123d70);
+    min-height: 100vh;
+    padding: 25px 12px;
+    color: #222;
+}
+
+.container {
+    width: 100%;
+    max-width: 650px;
+    margin: auto;
+}
+
+.login-card {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+    font-size: 45px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #09264c;
+    font-size: 25px;
+}
+
+h2 {
+    text-align: center;
+    color: #dba900;
+    margin-top: 5px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin: 12px 0 25px;
+}
+
+.form-section {
+    margin-top: 20px;
+}
+
+.form-section h2 {
+    margin-bottom: 20px;
+    color: #09264c;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin: 14px 0 7px;
+    color: #09264c;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    background: #fff;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #dba900;
+    box-shadow: 0 0 4px rgba(219, 169, 0, 0.5);
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 16px;
+    border: none;
+    border-radius: 8px;
+    background: #09264c;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #dba900;
+    color: #09264c;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#message {
+    text-align: center;
+    color: #14532d;
+    font-weight: bold;
+    margin-top: 18px;
+    overflow-wrap: anywhere;
+}
+
+/* DIGITAL WARRANTY CARD */
+
+.warranty-card {
+    width: 100%;
+    margin: 20px auto;
+    border: 3px solid #dba900;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    background: #09264c;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+    border-bottom: 5px solid #dba900;
+}
+
+.card-header h2 {
+    color: #fff;
+    font-size: 20px;
+}
+
+.card-header p {
+    color: #f5ca36;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.card-header h3 {
+    color: #f5ca36;
+    margin-top: 18px;
+    letter-spacing: 2px;
+}
+
+.card-body {
+    padding: 22px;
+    line-height: 1.9;
+    overflow-wrap: anywhere;
+}
+
+.card-body p {
+    font-size: 14px;
+    color: #222;
+}
+
+.card-body strong {
+    color: #09264c;
+}
+
+.card-body hr {
+    border: none;
+    border-top: 2px dashed #dba900;
+    margin: 12px 0;
+}
+
+#cardStatus {
+    color: #16803c;
+    font-weight: bold;
+}
+
+.card-footer {
+    background: #f0f4fa;
+    border-top: 2px solid #dba900;
+    padding: 18px;
+    text-align: center;
+    color: #09264c;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+#dashboardSection > button {
+    margin-top: 12px;
+}
+
+.footer {
+    border-top: 1px solid #ddd;
+    margin-top: 30px;
+    padding-top: 20px;
+    text-align: center;
+    color: #555;
+    line-height: 1.8;
+    font-size: 13px;
+}
+
+.footer h3 {
+    color: #09264c;
+    margin-bottom: 10px;
+}
+
+.copyright {
+    margin-top: 15px;
+    font-size: 11px;
+}
+
+/* PDF / PRINT LAYOUT */
+
+@media print {
+    @page {
+        size: A4;
+        margin: 15mm;
+    }
+
+    body {
+        background: white !important;
+        padding: 0;
+    }
+
+    body * {
+        visibility: hidden;
+    }
+
+    #warrantyCard,
+    #warrantyCard * {
+        visibility: visible;
+    }
+
+    #warrantyCard {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        box-shadow: none;
+        border: 2px solid #dba900;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
+/* MOBILE DESIGN */
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 20px 15px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .card-header h2 {
+        font-size: 16px;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    .card-body p {
+        font-size: 13px;
+    }
+}
